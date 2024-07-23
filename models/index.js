@@ -7,7 +7,7 @@ const serviceUri = process.env.DB_URI;
 const sequelize = new Sequelize(serviceUri, {
   dialect: "mysql",
   dialectModule: require("mysql2"),
-  logging: true,
+  logging: false,
 });
 
 
