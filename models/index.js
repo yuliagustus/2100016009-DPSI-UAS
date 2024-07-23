@@ -1,8 +1,20 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('dpsiuas', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql'
+
+require("dotenv").config(); // Load environment variables
+
+const serviceUri = process.env.DB_URI;
+
+const sequelize = new Sequelize(serviceUri, {
+  dialect: "mysql",
+  dialectModule: require("mysql2"),
+  logging: true,
 });
+
+
+// const sequelize = new Sequelize('dpsiuas', 'root', '', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
 
 // Import model-model yang dibutuhkan
 const BarangModel = require('./Barang');
